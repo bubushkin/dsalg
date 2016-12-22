@@ -45,6 +45,36 @@ ListElement *insertAtBeginning(ListElement *start, int data) {
 	return start;
 }
 
+ListElement *initialize(ListElement *start, int data) {
+
+	start = insertAtBeginning(start, data);
+	return start;
+}
+
+ListElement *createList(ListElement *start) {
+
+	int n, data;
+
+	printf("Enter number of nodes: ");
+	scanf("%d", &n);
+
+	if (n == 0x0) {
+		return start;
+	}
+
+	printf("Enter the first element of the list: ");
+	scanf("%d", &data);
+	start = insertAtBeginning(start, data);
+
+	for (int i = 2; i < n; i++) {
+		printf("Enter the next element of the list: ");
+		scanf("%d", &data);
+		insertAtEnd(start, data);
+	}
+
+	return start; 
+}
+
 int countElements(ListElement *start) {
 
 	int n = 0x0;
