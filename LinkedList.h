@@ -1,8 +1,10 @@
+#ifndef LINKEDLIST_H_   /* Include guard */
+#define LINKEDLIST_H_
 
 typedef struct ListElement_ {
 	int data;
-	ListElement *pnext;
-}ListElement;
+	ListElement *pnext = NULL;
+} ListElement;
 
 void displayElement(ListElement *);
 
@@ -14,3 +16,7 @@ ListElement *insertAtBeginning(ListElement *, int);
 
 void insertAtEnd(ListElement *, int);
 
+ListElement *initialize(ListElement *, int);
+ListElement *createList(ListElement *);
+
+#endif // FOO_H_
