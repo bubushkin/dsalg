@@ -46,7 +46,7 @@ ListElement *insertAtBeginning(ListElement *start, int data) {
 	return start;
 }
 
-ListElement *initialize(ListElement *start, int data) {
+ListElement *initialize2(ListElement *start, int data) {
 
 	start = insertAtBeginning(start, data);
 	return start;

@@ -29,7 +29,7 @@ void deleteLastElement(ListElement *);
 void reverse(ListElement *);
 
 
-ListElement *initialize(ListElement *, int);
+ListElement *initialize2(ListElement *, int);
 ListElement *createList(ListElement *);
 
 void deconstructor(ListElement *);
