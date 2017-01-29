@@ -59,7 +59,7 @@ int search_element(Element **pastart, int adata, int *paddr){
 	while(aux != NULL){
 		if(aux->data == adata){
 			memcpy(paddr, &aux->data, 0x1);
-			return 0x1;
+			return 0x1q;
 		}
 		aux = aux->pnext;
 	}
