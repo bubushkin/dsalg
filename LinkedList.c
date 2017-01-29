@@ -6,6 +6,7 @@
  */
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "LinkedList.h"
 
 
@@ -13,7 +14,6 @@ void initialize_node(Element **node, int data){
 	*node = (Element *) malloc(sizeof(Element));
 	(*node)->data = data;
 }
-
 
 void insert_at_end(Element **start, int data){
 
@@ -59,7 +59,7 @@ int search_element(Element **pastart, int adata, int *paddr){
 	while(aux != NULL){
 		if(aux->data == adata){
 			memcpy(paddr, &aux->data, 0x1);
-			return 0x1q;
+			return 0x1;
 		}
 		aux = aux->pnext;
 	}
@@ -84,6 +84,28 @@ void destroy(LinkedList *palist){
 	free(palist);
 }
 
+void insert_at_offset(Element **pastart, unsigned int aoffset, int adata){
+
+	Element *aux = *pastart;
+	unsigned int offset = 0x0;
+	while(aux->pnext != NULL){
+
+		if(offset == (aoffset - 0x1)){
+			Element *pelem = (Element *) malloc(sizeof(Element));
+			if(pelem != NULL){
+				pelem->data = adata;
+				pelem->pnext = aux->pnext;
+				aux->pnext = pelem;
+				break;
+			} else{
+				fprintf(stderr, "Memory allocation failed:[%s]\n", __FUNCTION__);
+			}
+		}
+		offset++;
+		aux = aux->pnext;
+	}
+}
+
 LinkedList *initialize(){
 
 	LinkedList *aLinkedList = NULL;
@@ -95,5 +117,6 @@ LinkedList *initialize(){
 	aLinkedList->pf_insert_at_end = insert_at_end;
 	aLinkedList->pf_size = size;
 	aLinkedList->pf_search_element = search_element;
+	aLinkedList->pf_insert_at_offset = insert_at_offset;
 	return aLinkedList;
 }

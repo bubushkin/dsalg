@@ -1,16 +1,17 @@
 /*
- * LinkedList.h
+ * DoubleLinkedList.h
  *
- *  Created on: Jan 26, 2017
+ *  Created on: Jan 29, 2017
  *      Author: iskandar
  */
 
-#ifndef LINKEDLIST_H_
-#define LINKEDLIST_H_
+#ifndef DOUBLELINKEDLIST_H_
+#define DOUBLELINKEDLIST_H_
 
 typedef struct Element_{
 
 	int data;
+	struct Element_ *pprev;
 	struct Element_ *pnext;
 
 } Element;
@@ -36,4 +37,5 @@ void insert_at_beginning(Element **, int);
 void insert_at_end(Element **, int);
 int search_element(Element **, int data, int *offset);
 void insert_at_offset(Element **, unsigned int offset, int data);
-#endif /* LINKEDLIST_H_ */
+
+#endif /* DOUBLELINKEDLIST_H_ */

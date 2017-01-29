@@ -12,6 +12,7 @@ int main(int argc, char **argv) {
 	linkedList->pf_insert_at_begining(&linkedList->node, 10);
 	linkedList->pf_insert_at_begining(&linkedList->node, 9);
 	linkedList->pf_insert_at_end(&linkedList->node, 11);
+	linkedList->pf_insert_at_offset(&linkedList->node, 1, 15);
 	linkedList->pf_size(linkedList);
 
 	printf("Count: %d\n", linkedList->size);
