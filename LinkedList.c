@@ -42,14 +42,58 @@ void insert_at_beginning(Element **start, int data){
 	}
 }
 
+void size(struct LinkedList_ *palist){
+
+	Element *paux = palist->node;
+
+	while(paux != NULL){
+		palist->size++;
+		paux = paux->pnext;
+	}
+}
+
+int search_element(Element **pastart, int adata, int *paddr){
+
+	Element *aux = *pastart;
+
+	while(aux != NULL){
+		if(aux->data == adata){
+			memcpy(paddr, &aux->data, 0x1);
+			return 0x1;
+		}
+		aux = aux->pnext;
+	}
+	return 0x0;
+}
+
+void destroy(LinkedList *palist){
+
+	LinkedList *aux;
+
+	while(palist->node != NULL){
+		aux = palist->node;
+		palist->node = palist->node->pnext;
+		free(aux);
+	}
+
+	palist->size = NULL;
+	palist->pf_initialize_node = NULL;
+	palist->pf_insert_at_begining = NULL;
+	palist->pf_insert_at_end = NULL;
+	palist->pf_size = NULL;
+	free(palist);
+}
+
 LinkedList *initialize(){
 
 	LinkedList *aLinkedList = NULL;
 
 	aLinkedList = (LinkedList *) malloc(sizeof(LinkedList));
+	aLinkedList->size = 0x0;
 	aLinkedList->pf_initialize_node = initialize_node;
 	aLinkedList->pf_insert_at_begining = insert_at_beginning;
 	aLinkedList->pf_insert_at_end = insert_at_end;
+	aLinkedList->pf_size = size;
+	aLinkedList->pf_search_element = search_element;
+	return aLinkedList;
 }
-
-
