@@ -52,6 +52,17 @@ void size(struct LinkedList_ *palist){
 	}
 }
 
+void cycle(Element **pastart){
+
+	Element *aux = *pastart;
+
+	while(aux->pnext != NULL){
+		aux = aux->pnext;
+	}
+	aux->pnext = *pastart;
+
+}
+
 int search_element(Element **pastart, int adata, int *paddr){
 
 	Element *aux = *pastart;
@@ -106,6 +117,47 @@ void insert_at_offset(Element **pastart, unsigned int aoffset, int adata){
 	}
 }
 
+void delete(Element **pastart, unsigned int aoffset){
+
+	int offset = 0x0;
+	Element *aux = *pastart;
+	while(aux != NULL){
+		if(offset == (aoffset - 0x1)){
+			Element *ptemp = aux->pnext;
+			aux->pnext = ptemp->pnext;
+			free(ptemp);
+			ptemp->pnext = NULL;
+			break;
+		}
+		offset++;
+		aux = aux->pnext;
+	}
+}
+
+void reverse(Element **pastart, unsigned int asize){
+
+	if(asize == 0x0){
+		return;
+	}
+	Element *_arr = malloc(sizeof(Element) * asize);
+	Element *aux = *pastart;
+	Element *prvs = NULL;
+
+	int i = 0x0;
+
+//	while(aux != NULL){
+//		memcpy(*(_arr)[i++], aux, 0x1);
+//		aux = aux->pnext;
+//	}
+//	int k = asize - 0x2;
+//	prvs = _arr[asize - 0x1];
+//
+//	while(k > 0x0){
+//		prvs->pnext =_arr[k--];
+//	}
+	*pastart = prvs;
+}
+
 LinkedList *initialize(){
 
 	LinkedList *aLinkedList = NULL;
@@ -118,5 +170,7 @@ LinkedList *initialize(){
 	aLinkedList->pf_size = size;
 	aLinkedList->pf_search_element = search_element;
 	aLinkedList->pf_insert_at_offset = insert_at_offset;
+	aLinkedList->pf_delete = delete;
+	aLinkedList->pf_reverse = reverse;
 	return aLinkedList;
 }

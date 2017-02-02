@@ -25,6 +25,8 @@ typedef struct LinkedList_{
 	void (*pf_size)(struct LinkedList_ *);
 	int (*pf_search_element)(Element **, int, int *);
 	void (*pf_insert_at_offset)(Element **, unsigned int, int);
+	void (*pf_delete)(Element **, unsigned int);
+	void (*pf_reverse)(Element **, unsigned size);
 
 } LinkedList;
 
@@ -36,4 +38,7 @@ void insert_at_beginning(Element **, int);
 void insert_at_end(Element **, int);
 int search_element(Element **, int data, int *offset);
 void insert_at_offset(Element **, unsigned int offset, int data);
+void delete(Element **, unsigned int offset);
+void reverse(Element **, unsigned size);
+void cycle(Element **);
 #endif /* LINKEDLIST_H_ */
