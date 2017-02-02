@@ -52,7 +52,7 @@ ListElement *initialize2(ListElement *start, int data) {
 	return start;
 }
 
-void reverse(ListElement *apstart){
+void reverse2(ListElement *apstart){
 	ListElement *prev, *curr, *next;
 	prev = NULL;
 	curr = apstart;

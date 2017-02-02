@@ -112,7 +112,7 @@ void push(struct Stack_ *pastack, void *paelem){
 				pastack->pstack += sizeof(long);
 				pastack->pstack = (long *)paelem;
 			} else if(strcmp(pastack->ptype, "char") == 0x0){
-				pastack->pstack += pastack->counter++ * sizeof(long);
+				pastack->pstack += sizeof(long);
 				pastack->pstack = (long *)paelem;
 			}
 			break;
